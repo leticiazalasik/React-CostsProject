@@ -11,3 +11,9 @@ html,body, #root{
     height: 100%;
     font-family: 'Open Sans', sans-serif;
 }
+
+.App {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
