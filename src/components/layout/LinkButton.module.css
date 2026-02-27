@@ -1,16 +1,21 @@
 .btn {
-    background-color: #222;
-    color: #fff;
-    padding: 0.5em 1em;
-    text-decoration: none;
-    transition: 0.5s;
+  background-color: #222;
+  color: #fff;
+  height: 3em;
+  padding: 0 1em;
+  transition: 0.5s;
+  justify-content: center;
+  align-items: center;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
 }
 
 .btn:visited {
-    color: #fff;
-  }
-  
+  color: #fff;
+}
 
 .btn:hover {
-    color: #ffbb33;
+  color: #ffbb33;
 }
