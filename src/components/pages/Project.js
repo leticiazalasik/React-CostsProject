@@ -69,7 +69,39 @@ function Project() {
   }
 
   //Remover serviço
-  function removeService() {}
+  //Quando o botão remover é clcido no serviceCard ele traz o id e cost do serviço
+  function removeService(id, cost) {
+
+    //project.services é o array de serviços do projeto
+    //filter mantém todos que NÃO são iguais ao id removido 
+    const servicesUpdated = project.services.filter(
+      (service) => service.id !== id,
+    );
+
+    //projectUpdated → aponta para o mesmo objeto de project, ambos são o mesmo objeto na memória.
+    const projectUpdated = project;
+
+    //O projeto agora tem a nova lista de serviços (sem o removido)
+    projectUpdated.services = servicesUpdated;
+
+    //novo custo = custo atual - custo do serviço removido
+    projectUpdated.cost = parseFloat(projectUpdated.cost) - parseFloat(cost);
+
+    fetch(`http://localhost:5000/projects/${projectUpdated.id}`, {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(projectUpdated),
+    })
+      .then((resp) => resp.json())
+      .then((data) => {
+        setProject(projectUpdated);
+        setServices(servicesUpdated);
+        setMessage("Serviço removido com sucesso!");
+      })
+      .catch((err) => console.log(err));
+  }
 
   //Função para mostrar botão de editar
   function toggleProjectForm() {
